@@ -16,19 +16,22 @@ def read_words_file():
 
 def letters_shuffle(word):
     letters_list = [letter for letter in word]
-    return letters_list
+    shuffle(letters_list)
+
+    return "".join(letters_list)
 
 
 def words_compare(word, user_answer):
+    points = 0
     if word == user_answer:
-        return print(f'Верно! Вы получаете 10 очков')
+        points += 10
     else:
-        return print(f'Неверно! Верный ответ – {word}')
-
+        pass
+    return points
+    
 
 def history_of_users(user_name, points):
     with open(os.path.join('history.txt'), "a") as f:
-        user = f.write(f'{user_name} {points}')
+        user = f.write(f'{user_name} {points}\n')
         return user
 
-history_of_users("Narmina", 56)
